@@ -12,11 +12,13 @@ brew install doorman
 After install, write your config and start the service:
 
 ```
-cp $(brew --prefix)/share/doorman/examples/doorman.yaml $(brew --prefix)/etc/doorman/doorman.yaml
+[ -e $(brew --prefix)/etc/doorman/doorman.yaml ] || cp $(brew --prefix)/share/doorman/examples/doorman.yaml $(brew --prefix)/etc/doorman/doorman.yaml
 $EDITOR $(brew --prefix)/etc/doorman/doorman.yaml
 chmod 0400 $(brew --prefix)/etc/doorman/doorman.yaml
 brew services start doorman
 ```
+
+If the service won't stay running, the launchd-captured stderr is at `$(brew --prefix)/var/log/doorman.stderr.log` — startup errors (missing config, wrong mode) land there. Doorman's per-request audit log is separate, at `$(brew --prefix)/var/log/doorman/audit.log`.
 
 ## Notes
 

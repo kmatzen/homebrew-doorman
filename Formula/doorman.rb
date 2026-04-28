@@ -40,7 +40,7 @@ class Doorman < Formula
     run [opt_bin/"doormand", "run",
          "--config", etc/"doorman/doorman.yaml",
          "--audit",  var/"log/doorman/audit.log"]
-    keep_alive true
+    keep_alive crashed: true
     log_path       var/"log/doorman.stderr.log"
     error_log_path var/"log/doorman.stderr.log"
   end
@@ -50,12 +50,22 @@ class Doorman < Formula
       doorman expects a config at #{etc}/doorman/doorman.yaml (mode 0400).
 
       Get started:
-        cp #{pkgshare}/examples/doorman.yaml #{etc}/doorman/doorman.yaml
+        [ -e #{etc}/doorman/doorman.yaml ] || cp #{pkgshare}/examples/doorman.yaml #{etc}/doorman/doorman.yaml
         $EDITOR #{etc}/doorman/doorman.yaml
         chmod 0400 #{etc}/doorman/doorman.yaml
 
       Then start the service:
         brew services start doorman
+
+      Logs (launchd-captured stdout/stderr):
+        #{var}/log/doorman.stderr.log
+
+      Audit log:
+        #{var}/log/doorman/audit.log
+
+      If the service won't stay running, the stderr log above is where
+      doorman's startup error will be — typically a missing or wrong-mode
+      config file.
 
       Note: brew runs doorman under your user uid, not a separate `_doorman`
       uid. For hardened production deployment with uid separation and
