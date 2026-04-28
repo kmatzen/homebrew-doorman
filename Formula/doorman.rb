@@ -1,27 +1,26 @@
 class Doorman < Formula
   desc "HTTP proxy that holds your API keys and refuses to send them anywhere they don't belong"
   homepage "https://github.com/kmatzen/doorman"
-  version "0.1.3"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v#{version}/doorman-#{version}-aarch64-apple-darwin.tar.gz"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.3/doorman-0.1.3-aarch64-apple-darwin.tar.gz"
       sha256 "a2a3953275f4ee14c1f658448c524f70c897226c579eac5ea596fd353383c627"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v#{version}/doorman-#{version}-x86_64-apple-darwin.tar.gz"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.3/doorman-0.1.3-x86_64-apple-darwin.tar.gz"
       sha256 "775a7ad5dcad619ae8e6c573b0dcf3deac1f615e93a819ce89baa16e6a181872"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v#{version}/doorman-#{version}-aarch64-unknown-linux-musl.tar.gz"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.3/doorman-0.1.3-aarch64-unknown-linux-musl.tar.gz"
       sha256 "3e1998dc7e3d486c98a4bdb30eb0353a6bad05a88d2550308ea4b65551f43ea0"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v#{version}/doorman-#{version}-x86_64-unknown-linux-musl.tar.gz"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.3/doorman-0.1.3-x86_64-unknown-linux-musl.tar.gz"
       sha256 "93fdd6ea898222c54bb3434e02d85218de9d408ae0709386d6da1165ad85eb99"
     end
   end
