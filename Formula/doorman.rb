@@ -51,8 +51,8 @@ class Doorman < Formula
 
       Get started:
         cp #{pkgshare}/examples/doorman.yaml #{etc}/doorman/doorman.yaml
-        chmod 0400 #{etc}/doorman/doorman.yaml
         $EDITOR #{etc}/doorman/doorman.yaml
+        chmod 0400 #{etc}/doorman/doorman.yaml
 
       Then start the service:
         brew services start doorman

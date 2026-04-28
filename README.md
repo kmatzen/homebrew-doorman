@@ -13,8 +13,8 @@ After install, write your config and start the service:
 
 ```
 cp $(brew --prefix)/share/doorman/examples/doorman.yaml $(brew --prefix)/etc/doorman/doorman.yaml
-chmod 0400 $(brew --prefix)/etc/doorman/doorman.yaml
 $EDITOR $(brew --prefix)/etc/doorman/doorman.yaml
+chmod 0400 $(brew --prefix)/etc/doorman/doorman.yaml
 brew services start doorman
 ```
 
