@@ -5,23 +5,23 @@ class Doorman < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.9/doorman-0.1.9-aarch64-apple-darwin.tar.gz"
-      sha256 "dfd07df3c33b589b6e271c83d2535758f6ed1affd639546a952fbb22e8e4b2a5"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-aarch64-apple-darwin.tar.gz"
+      sha256 "7b4214d08604e33462c5cf1323b3312fbc8044a97c04ece6271dc0598ef86d4b"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.9/doorman-0.1.9-x86_64-apple-darwin.tar.gz"
-      sha256 "cc7c3030183e391e2401635d23f0a9f56508177fce3526e1e44c4a4f13dd3263"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-x86_64-apple-darwin.tar.gz"
+      sha256 "0c5279e67660ed20ef74306e3d1d97bff4ac968900ec52872ac2f58ade11886b"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.9/doorman-0.1.9-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "8e1578b2ef1bea33c7a82362677ad7ae55a1c3bd7a3e5d0bdf09046db09d9fa4"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "9a993682e4d458fe4def101e28e74b6f7ad3aff567b40880fdb030b6793f81e8"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.9/doorman-0.1.9-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "2e42fd32cf3275efaac74f6cbfd373a46735ede4925a6896906b9e36ec4e49cd"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "16e751d11d8f5105e4d942daa3f52a46b12a1b62ae34770a9a0f22593d931f16"
     end
   end
 
@@ -67,10 +67,16 @@ class Doorman < Formula
       doorman's startup error will be — typically a missing or wrong-mode
       config file.
 
-      Note: brew runs doorman under your user uid, not a separate `_doorman`
-      uid. For hardened production deployment with uid separation and
-      LaunchDaemon-level isolation, install via the install-darwin.sh
-      script in the upstream repo instead.
+      Security note: brew runs doorman under your own login uid, not a
+      separate service account. File permissions (mode 0400) keep *other*
+      users out but do NOT isolate the plaintext secrets from other code
+      running as you (a shell, cron, an AI coding agent) — which can read
+      them directly and bypass the proxy (see issue #39). doorman prints a
+      startup warning in this case; pass `--allow-same-uid` to acknowledge
+      and silence it. For a real boundary — doorman under a dedicated uid
+      your app code never runs as — deploy via the upstream service path:
+        macOS:  scripts/install-darwin.sh  (creates the `_doorman` account)
+        Linux:  the systemd unit from `doormand install-service`  (User=doorman)
     EOS
   end
 
