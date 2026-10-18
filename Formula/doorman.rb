@@ -1,27 +1,27 @@
 class Doorman < Formula
-  desc "HTTP proxy that holds your API keys and refuses to send them anywhere they don't belong"
+  desc "HTTP proxy that keeps API keys away from untrusted agents"
   homepage "https://github.com/kmatzen/doorman"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-aarch64-apple-darwin.tar.gz"
-      sha256 "7b4214d08604e33462c5cf1323b3312fbc8044a97c04ece6271dc0598ef86d4b"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-aarch64-apple-darwin.tar.gz"
+      sha256 "a5cea803fe19c9aa8433cd359a1c5de16e963fea27de66624b7b67e7f955df51"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-x86_64-apple-darwin.tar.gz"
-      sha256 "0c5279e67660ed20ef74306e3d1d97bff4ac968900ec52872ac2f58ade11886b"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-x86_64-apple-darwin.tar.gz"
+      sha256 "4bfc633855243015c2361800be0e58f8c60926f44312e491af2722f15649b92a"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "9a993682e4d458fe4def101e28e74b6f7ad3aff567b40880fdb030b6793f81e8"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "7796111e4bb093213234974a89ca839dcb9a65fca9b0c3c6f6602f0a21b5053d"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.10/doorman-0.1.10-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "16e751d11d8f5105e4d942daa3f52a46b12a1b62ae34770a9a0f22593d931f16"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "a492c90b913ee0bb2a3ee4b6feb5b913734dfe53901a233ec9b58c2d5e0fe6f0"
     end
   end
 
@@ -31,9 +31,9 @@ class Doorman < Formula
     pkgshare.install "README.md"
   end
 
-  def post_install
-    (var/"log/doorman").mkpath
-    (etc/"doorman").mkpath
+  post_install_steps do
+    mkdir_p "log/doorman", base: :var
+    mkdir_p "doorman", base: :etc
   end
 
   service do
