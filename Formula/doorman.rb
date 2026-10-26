@@ -5,23 +5,23 @@ class Doorman < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-aarch64-apple-darwin.tar.gz"
-      sha256 "a5cea803fe19c9aa8433cd359a1c5de16e963fea27de66624b7b67e7f955df51"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.12/doorman-0.1.12-aarch64-apple-darwin.tar.gz"
+      sha256 "3e07ed6e700f16265ae2cdd155176076cf12a6d5104bb37d5fe113709d057cba"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-x86_64-apple-darwin.tar.gz"
-      sha256 "4bfc633855243015c2361800be0e58f8c60926f44312e491af2722f15649b92a"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.12/doorman-0.1.12-x86_64-apple-darwin.tar.gz"
+      sha256 "925066a5fc2a6685bcb6b9d8728657420be4e8289a661bb467a3d7826334e020"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "7796111e4bb093213234974a89ca839dcb9a65fca9b0c3c6f6602f0a21b5053d"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.12/doorman-0.1.12-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "609606e37249dd8be5265935eef30dfb24178e018e8cc7f0272626ac02219f7d"
     end
     on_intel do
-      url "https://github.com/kmatzen/doorman/releases/download/v0.1.11/doorman-0.1.11-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "a492c90b913ee0bb2a3ee4b6feb5b913734dfe53901a233ec9b58c2d5e0fe6f0"
+      url "https://github.com/kmatzen/doorman/releases/download/v0.1.12/doorman-0.1.12-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "fdbf40ced6ca70e6c319c5fdfc14ee14a8949c18a8c281127e1e22334e73804c"
     end
   end
 
